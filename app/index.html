@@ -11,7 +11,7 @@
   </head>
   <body class="container" ng-controller="testController">
     <div id="container">
-      <header>Test Scores</header>
+      <header><h1>Test Scores</h1></header>
       <uib-accordion close-others="oneAtATime">
         <uib-accordion-group class="sat-form" ng-repeat="exam in examList" heading="{{ exam.name }}">
 
@@ -40,17 +40,18 @@
             <div class="form-group col-md-12">
               <div class="col-md-4">
                 <label>Reading</label>
-                <input class="form-control" type="number" ng-model="sat.reading"/>
+                <input class="form-control" type="number" ng-change="updateTestScore(sat)" ng-model="sat.reading"/>
               </div>
               <div class="col-md-4">
                 <label>Writing</label>
-                <input class="form-control" type="number" ng-model="sat.writing"/>
+                <input class="form-control" type="number" ng-change="updateTestScore(sat)" ng-model="sat.writing"/>
               </div>
               <div class="col-md-4">
                 <label>Maths</label>
-                <input class="form-control" type="number" ng-model="sat.maths">
+                <input class="form-control" type="number" ng-change="updateTestScore(sat)" ng-model="sat.maths">
               </div>
             </div>
+            <span class="glyphicon glyphicon-remove" ng-click="removeTest($index, exam.exam )"></span>
           </form>
           <div  class="pull-left">
             <button class="btn btn-primary" ng-click="addTest(exam.exam)">Add another {{ exam.name }}</button>
