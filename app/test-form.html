@@ -1,0 +1,19 @@
+<form novalidate>
+  <label>Test Date</label>
+
+  <select for="Month">
+    <option ng-repeat="month in months" value="{{month}}">{{ month }}</option>
+  </select>
+  <select for="Year">
+    <option ng-repeat="year in years" value="{{year}}">{{ year }}</option>
+  </select>
+
+  <label>Test Score</label>{{ testScore }}
+  <label>Reading</label>
+  <input type="number" value="" ng-model="test.reading"/>
+  <label>Writing</label>
+  <input type="number" value="" ng-model="test.writing"/>
+  <label>Maths</label>
+  <input type="number" value="" ng-model="test.maths">
+
+</form>

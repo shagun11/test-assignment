@@ -1,0 +1,8 @@
+./dist/
+bin/
+node_modules/
+.tmp/
+.idea/
+.settings/
+.sass-cache/
+*~
