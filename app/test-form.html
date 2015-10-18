@@ -2,18 +2,18 @@
   <label>Test Date</label>
 
   <select for="Month">
-    <option ng-repeat="month in months" value="{{month}}">{{ month }}</option>
+    <option ng-repeat="month in months" value="{{month}}" ng-model="test.month">{{ month }}</option>
   </select>
   <select for="Year">
-    <option ng-repeat="year in years" value="{{year}}">{{ year }}</option>
+    <option ng-repeat="year in years" value="{{year}}" ng-model="test.year">{{ year }}</option>
   </select>
 
-  <label>Test Score</label>{{ testScore }}
+  <label>Test Score</label>{{ test.testScore }}
   <label>Reading</label>
-  <input type="number" value="" ng-model="test.reading"/>
+  <input type="number" ng-model="test.reading"/>
   <label>Writing</label>
-  <input type="number" value="" ng-model="test.writing"/>
+  <input type="number" ng-model="test.writing"/>
   <label>Maths</label>
-  <input type="number" value="" ng-model="test.maths">
-
+  <input type="number" ng-model="test.maths">
+  <input type="submit" ng-click="addTest()" value="Add another SAT"/>
 </form>

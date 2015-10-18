@@ -5,5 +5,5 @@
  */
     
 angular
-    .module('testApp', []);
+    .module('testApp', ['ngAnimate', 'ui.bootstrap']);
 
