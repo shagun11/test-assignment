@@ -1,0 +1,12 @@
+.grid  {
+  background-color: #33A7FF;
+  padding: 20px 0px;
+  text-align: center;
+  border: 1px solid #0066b3;
+}
+
+.palette {
+  min-height: 50px;
+  padding: 0;
+  border-radius: 5px;
+}
