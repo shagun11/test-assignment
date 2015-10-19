@@ -8,6 +8,8 @@
     <link rel="shortcut icon" href="favicon.ico" />
     <link href="/libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
+    <link href="/css/app.css" rel="stylesheet">
+
   </head>
   <body class="container" ng-controller="testController">
     <div id="container">
@@ -15,18 +17,18 @@
       <uib-accordion close-others="oneAtATime">
         <uib-accordion-group class="sat-form" ng-repeat="exam in examList" heading="{{ exam.name }}">
 
-          <form ng-repeat="sat in exam.exam" novalidate>
+          <form ng-repeat="sat in exam.exam" class="exam-form" name="form" novalidate>
             <div class="form-group col-md-6">
 
                 <label class="col-md-12">Test Date <small>(If you haven't taken SAT, add upcoming date)</small></label>
               <div class="col-md-6">
-                <select for="Month" class="form-control col-md-6">
-                  <option ng-repeat="month in months" value="{{month}}" ng-model="sat.month">{{ month }}</option>
+                <select for="Month" class="form-control col-md-6" ng-model="sat.month">
+                  <option ng-repeat="month in months" value="{{month}}">{{ month }}</option>
                 </select>
               </div>
               <div class="col-md-6">
-                <select for="Year" class="form-control col-md-6">
-                  <option ng-repeat="year in years" value="{{year}}" ng-model="sat.year">{{ year }}</option>
+                <select for="Year" class="form-control col-md-6" ng-model="sat.year">
+                  <option ng-repeat="year in years" value="{{year}}">{{ year }}</option>
                 </select>
               </div>
 
@@ -38,20 +40,20 @@
 
 
             <div class="form-group col-md-12">
-              <div class="col-md-4">
+              <div class="col-md-4" ng-class="{'has-error': form.reading.$invalid && form.reading.$dirty}">
                 <label>Reading</label>
-                <input class="form-control" type="number" ng-change="updateTestScore(sat)" ng-model="sat.reading"/>
+                <input class="form-control" name="reading" type="number" ng-change="updateTestScore(sat)" ng-model="sat.reading" required>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-4" ng-class="{'has-error': form.writing.$invalid && form.writing.$dirty}">
                 <label>Writing</label>
-                <input class="form-control" type="number" ng-change="updateTestScore(sat)" ng-model="sat.writing"/>
+                <input class="form-control" name="writing" type="number" ng-change="updateTestScore(sat)" ng-model="sat.writing" required>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-4" ng-class="{'has-error': form.maths.$invalid && form.maths.$dirty}">
                 <label>Maths</label>
-                <input class="form-control" type="number" ng-change="updateTestScore(sat)" ng-model="sat.maths">
+                <input class="form-control" name="maths" type="number" ng-change="updateTestScore(sat)" ng-model="sat.maths" required>
               </div>
             </div>
-            <span class="glyphicon glyphicon-remove" ng-click="removeTest($index, exam.exam )"></span>
+            <span class="close-icon glyphicon glyphicon-remove" ng-click="removeTest($index, exam.exam )"></span>
           </form>
           <div  class="pull-left">
             <button class="btn btn-primary" ng-click="addTest(exam.exam)">Add another {{ exam.name }}</button>
